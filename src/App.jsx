@@ -1,18 +1,31 @@
 import './App.css'
 import {createTheme, MantineProvider} from '@mantine/core';
 import '@mantine/core/styles.css';
-import TemplateMatcherForm from "./components/form/TemplateMatcherForm.jsx";
+import '@mantine/dropzone/styles.css';
+import {RouterProvider} from "react-router-dom";
+import {router} from "@/app/router.jsx";
+import {QueryClient, QueryClientProvider} from "react-query";
+
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            refetchOnWindowFocus: false,
+        }
+    }
+});
 
 const theme = createTheme({
-    /** Put your mantine theme override here */
+    primaryColor : "teal",
 });
 
 function App() {
 
   return (
-      <MantineProvider theme={theme}>
-          <TemplateMatcherForm />
-      </MantineProvider>
+      <QueryClientProvider client={queryClient}>
+          <MantineProvider theme={theme}>
+              <RouterProvider router={router} />
+          </MantineProvider>
+      </QueryClientProvider>
   )
 }
 

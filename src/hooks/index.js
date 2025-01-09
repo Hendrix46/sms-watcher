@@ -1,11 +1,9 @@
-import axios from "axios";
+import {useMutation} from "react-query";
+import apiReq from "./request.js";
 
-export const checkTemplate = (text) => {
-    axios.post(`https://kennedy-oval-luxembourg-wax.trycloudflare.com/api/v1/templates/check`, {
-        text
-    }).then((response) => {
-        return response.data
-    }).catch((error) => {
-        return error
-    })
+export const useCheckTemplateMutation = () => {
+   return useMutation((data) => {
+       return apiReq.post('/templates/api/v1/templates/check', data)
+                .then(res => res.data);
+   });
 }
