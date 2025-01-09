@@ -18,7 +18,7 @@ const TemplateMatcherForm = () => {
         },
     });
 
-    const onSubmit = (data) => {
+    const handleSubmit = (data) => {
         setLoading(true);
         mutation.mutate(data.text, {
             onSuccess: (data) => {
@@ -70,13 +70,13 @@ const TemplateMatcherForm = () => {
 
     return (
         <Box p={24}>
-            <Container size={1280}>
+            <Box>
                 <Title fw={500}>
                     Сопоставление текста с шаблоном
                 </Title>
 
                 <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-                    <form onSubmit={form.onSubmit(onSubmit)}>
+                    <form onSubmit={form.onSubmit(handleSubmit)}>
                         <Flex direction="column" gap={24}>
                             <Textarea
                                 label="Сообщение"
@@ -111,7 +111,7 @@ const TemplateMatcherForm = () => {
                         </Table>
                     )}
                 </Paper>
-            </Container>
+            </Box>
         </Box>
     );
 };
