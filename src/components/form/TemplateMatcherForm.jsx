@@ -1,8 +1,9 @@
-import {Box, Button, Container, Flex, Paper, Skeleton, Table, Text, Textarea, Title} from "@mantine/core";
+import {Box, Button, Container, Flex, Paper, Skeleton, Table, Text, Textarea, TextInput, Title} from "@mantine/core";
 import {useForm} from "@mantine/form";
 import {useCheckTemplateMutation} from "@/hooks/index.js";
 import {useState} from "react";
 import classes from './TemplateMatcherForm.module.css';
+import {notifications} from "@mantine/notifications";
 
 const TemplateMatcherForm = () => {
     const [loading, setLoading] = useState(false);
@@ -15,16 +16,31 @@ const TemplateMatcherForm = () => {
         mode: 'uncontrolled',
         initialValues: {
             text: '',
+            login: '',
         },
     });
 
     const handleSubmit = (data) => {
         setLoading(true);
-        mutation.mutate(data.text, {
+        mutation.mutate({login : data?.login, text: data?.text}, {
             onSuccess: (data) => {
                 setLoading(false);
-                setResponse(data);
+                setResponse(data?.data);
                 setIsHidden(false);
+                console.log(data, 'data')
+                if (data.status === "SUCCESS") {
+                    notifications.show({
+                        title: 'Успешно',
+                        message: 'Текст соответствует шаблону',
+                    })
+                }
+                if (data.status === "ERROR") {
+                    notifications.show({
+                        title: 'Ошибка',
+                        message: 'Текст не соответствует шаблону',
+                        color: "red"
+                    })
+                }
             },
             onError: (error) => {
                 setLoading(false);
@@ -78,9 +94,16 @@ const TemplateMatcherForm = () => {
                 <Paper withBorder shadow="md" p={30} mt={30} radius="md">
                     <form onSubmit={form.onSubmit(handleSubmit)}>
                         <Flex direction="column" gap={24}>
+                            <TextInput
+                                label="Логин"
+                                placeholder="Введите логин"
+                                required
+                                key={form.key('login')}
+                                {...form.getInputProps('login')}
+                            />
                             <Textarea
                                 label="Сообщение"
-                                placeholder="Введи сообщение"
+                                placeholder="Введите сообщение"
                                 rows={4}
                                 required
                                 resize="vertical"

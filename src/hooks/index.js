@@ -10,14 +10,13 @@ export const useLoginMutation = () => {
 
 export const useCheckTemplateMutation = () => {
    return useMutation((data) => {
-       return apiReq.post('/templates/api/v1/templates/check', data)
-                .then(res => res.data);
+       return apiReq.post('/api/v1/templates/check', data)
    });
 }
 
 export const useUploadTemplatesMutation = () => {
     return useMutation((formData) => {
-        return apiReq.post('/templates/api/v1/templates/upload', formData, {
+        return apiReq.post('/api/v1/templates/upload', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }

@@ -5,13 +5,13 @@ import {ROUTES} from "@/constants/routes.js";
 import {Container} from "@mantine/core";
 
 const MainLayout = () => {
-    const navigate = useNavigate();
-    const token = localStorage.getItem("token");
-    useEffect(() => {
-        if (!token) {
-            navigate(ROUTES.LOGIN)
-        }
-    }, [token, navigate]);
+    // const navigate = useNavigate();
+    // const token = localStorage.getItem("token");
+    // useEffect(() => {
+    //     if (!token) {
+    //         navigate(ROUTES.LOGIN)
+    //     }
+    // }, [token, navigate]);
     return (
         <>
             <Header />

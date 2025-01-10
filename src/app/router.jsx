@@ -20,13 +20,13 @@ const routes = [
           },
       ]
     },
-    {
-      path: ROUTES.LOGIN,
-      element: <Login />
-    },
+    // {
+    //   path: ROUTES.LOGIN,
+    //   element: <Login />
+    // },
     {
         path: '*',
-        element: <Suspense fallback={<p>loading ...</p>}><Login />  </Suspense>,
+        element: <Suspense fallback={<p>loading ...</p>}><TemplateMatcherForm /></Suspense>,
     },
 ];
 

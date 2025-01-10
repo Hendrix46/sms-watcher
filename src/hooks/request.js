@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://connecticut-purchases-comm-drilling.trycloudflare.com";
+const BASE_URL = "https://planned-recommendation-marina-trim.trycloudflare.com/";
 const apiRequest = axios.create({
     baseURL: BASE_URL,
     headers: {},

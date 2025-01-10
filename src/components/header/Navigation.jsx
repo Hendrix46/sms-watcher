@@ -4,7 +4,7 @@ import { useDisclosure } from '@mantine/hooks';
 import Logo from '@/assets/logo.png';
 import classes from './Navigation.module.css';
 import {ROUTES} from "@/constants/routes.js";
-import {NavLink} from "react-router-dom";
+import {NavLink, useLocation} from "react-router-dom";
 
 const links = [
     { link: ROUTES.SMS_CHECKER, label: 'Проверка СМС' },
@@ -12,8 +12,9 @@ const links = [
 ];
 
 export const Header = () => {
+    const pathname = useLocation().pathname;
     const [opened, { toggle }] = useDisclosure(false);
-    const [active, setActive] = useState(links[0].link);
+    const [active, setActive] = useState(pathname);
 
     const items = links.map((link) => (
         <NavLink
