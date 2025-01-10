@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {Burger, Container, Group, Image} from '@mantine/core';
+import {Burger, Container, Group, Image, Stack, Text} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Logo from '@/assets/logo.png';
 import classes from './Navigation.module.css';
@@ -22,7 +22,7 @@ export const Header = () => {
             to={link.link}
             className={classes.link}
             data-active={active === link.link || undefined}
-            onClick={(event) => {
+            onClick={() => {
                 setActive(link.link);
             }}
         >
@@ -33,7 +33,10 @@ export const Header = () => {
     return (
         <header className={classes.header}>
             <Container size={1280} className={classes.inner}>
-                <Image src={Logo} alt="logo" w={48} />
+                <Stack gap={0} align="center">
+                    <Image src={Logo} alt="logo" w={48} />
+                    <Text fz={16} fw={500}>SMS Service</Text>
+                </Stack>
                 <Group gap={12} visibleFrom="xs">
                     {items}
                 </Group>

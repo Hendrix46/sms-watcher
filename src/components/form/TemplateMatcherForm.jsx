@@ -85,7 +85,7 @@ const TemplateMatcherForm = () => {
     };
 
     return (
-        <Box p={24}>
+        <Box>
             <Box>
                 <Title fw={500}>
                     Сопоставление текста с шаблоном

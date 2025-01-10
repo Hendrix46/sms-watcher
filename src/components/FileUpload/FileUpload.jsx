@@ -57,7 +57,7 @@ const FileUpload = (props) => {
                     zIndex={1000}
                     overlayProps={{ radius: "sm", blur: 2 }}
                 />
-                <Paper withBorder shadow="md" p={30} mt={30} radius="md">
+                <Paper withBorder shadow="md" p={24} mt={30} radius="md">
                     <Dropzone
                         onDrop={(files) => setFile(files[0])}
                         onReject={(files) => console.log('rejected files', files)}
