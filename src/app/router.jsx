@@ -1,10 +1,8 @@
 import {createBrowserRouter, Navigate} from "react-router-dom";
 import {ROUTES} from "@/constants/routes.js";
-import {lazy, Suspense} from "react";
 import TemplateMatcherForm from "@/components/form/TemplateMatcherForm.jsx";
 import MainLayout from "@/components/layout/MainLayout.jsx";
 import FileUpload from "@/components/FileUpload/FileUpload.jsx";
-import {Login} from "@/components/auth/Login.jsx";
 
 const routes = [
     {
@@ -30,7 +28,7 @@ const routes = [
     // },
     {
         path: '*',
-        element: <Suspense fallback={<p>loading ...</p>}><TemplateMatcherForm /></Suspense>,
+        element:  <Navigate to={ROUTES.SMS_CHECKER} replace />,
     },
 ];
 
