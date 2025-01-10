@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://planned-recommendation-marina-trim.trycloudflare.com/";
+const BASE_URL = "http://localhost:8080/";
 const apiRequest = axios.create({
     baseURL: BASE_URL,
     headers: {},
